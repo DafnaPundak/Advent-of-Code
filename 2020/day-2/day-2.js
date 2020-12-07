@@ -1,17 +1,4 @@
-// const fs = require("fs");
-
-// let data = fs
-//   .readFileSync(
-//     "/Users/Dafi/Documents/code/Advent of Code/2020/day-2/input.txt",
-//     "utf8"
-//   )
-//   .toString()
-//   .split("\n")
-//   .map((s) => s.replace(/\r$/, ""))
-//   .filter((s) => s.length > 0);
-// console.log(data);
-
-const inputToArray = function (n) {
+const countValid = function (n) {
   let numValid = 0;
 
   for (let k = 0; k < n.length; k++) {
@@ -24,7 +11,6 @@ const inputToArray = function (n) {
         let toPush = copyArray.slice(0, i);
         newArray = array.slice(i);
         arrayToReturn.push(toPush);
-        // let numValid = 0;
 
         for (let j = 1; j < newArray.length; j++) {
           if (newArray[j] === " ") {
@@ -47,8 +33,6 @@ const inputToArray = function (n) {
               max = Number(x[x.length - 1]);
             }
             let sumY = 0;
-            // let valid = Boolean(true);
-            // let numValid = 0;
             for (let i = 0; i < z.length; i++) {
               if (z[i] == y) {
                 sumY++;
@@ -56,17 +40,13 @@ const inputToArray = function (n) {
             }
             if (sumY <= max && sumY >= min) {
               numValid++;
-              // return numValid;
-            } else {
-              // return !valid;
             }
           }
         }
-        // return numValid;
       }
     }
   }
   return numValid;
 };
 
-module.exports = inputToArray;
+module.exports = countValid;

@@ -1,28 +1,28 @@
-const inputToArray = require("./day-2");
+const countValid = require("./day-2");
 
 test("", () => {
-  expect(inputToArray(["2-9 c: ccccccccc"])).toEqual(1);
+  expect(countValid(["2-9 c: ccccccccc"])).toEqual(1);
 });
 
 test("", () => {
-  expect(inputToArray(["1-3 b: cdefg"])).toEqual(0);
+  expect(countValid(["1-3 b: cdefg"])).toEqual(0);
 });
 
 test("", () => {
-  expect(inputToArray(["1-3 a: abcde"]64)).toEqual(1);
+  expect(countValid(["1-3 a: abcde"])).toEqual(1);
 });
 
 test("", () => {
-  expect(inputToArray(["1-9 x: xwjgxtmrzxzmkx", "4-6 r: rrrkrgr"])).toEqual(2);
+  expect(countValid(["1-9 x: xwjgxtmrzxzmkx", "4-6 r: rrrkrgr"])).toEqual(2);
 });
 
 test("", () => {
-  expect(inputToArray(["15-16 s: bsshsszslssssslqdssss"])).toEqual(0);
+  expect(countValid(["15-16 s: bsshsszslssssslqdssss"])).toEqual(0);
 });
 
 test("", () => {
   expect(
-    inputToArray([
+    countValid([
       "1-9 x: xwjgxtmrzxzmkx",
       "4-6 r: rrrkrgr",
       "4-5 v: vvfvvvn",
@@ -68,5 +68,5 @@ test("", () => {
     .map((s) => s.replace(/\r$/, ""))
     .filter((s) => s.length > 0);
 
-  expect(inputToArray(data)).toEqual(640);
+  expect(countValid(data)).toEqual(640);
 });

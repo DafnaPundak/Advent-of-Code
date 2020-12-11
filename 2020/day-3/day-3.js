@@ -1,15 +1,34 @@
-const treesNum = function (n) {
-  let rows = 0;
+const fs = require("fs");
+
+let data = fs
+  .readFileSync(
+    "/Users/Dafi/Documents/code/Advent of Code/2020/day-3/input.txt",
+    "utf8"
+  )
+  .toString()
+  .split("\n")
+  .map((s) => s.replace(/\r$/, ""))
+  .filter((s) => s.length > 0)
+  .map((r) => r.concat(...Array.from({ length: 32 }, () => r)));
+
+const treesNum = function (data) {
+  let stepsRight = 1;
+  let rowCheck = 0;
   let trees = 0;
-  for (let r = 0; r < n.length; r++) {
-    let row = n[r];
-    for (let i = 0; i < row.length; i++) {
-      if (row[i] == "#") {
-        trees++;
-      }
+  for (let row = 1; row < data.length; row++) {
+    stepsRight = stepsRight + 3;
+
+    if (data[row][stepsRight - 1] == "#") {
+      trees++;
     }
+
+    rowCheck++;
   }
+
+  console.log(trees);
   return trees;
 };
 
 module.exports = treesNum;
+
+treesNum(data);

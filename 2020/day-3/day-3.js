@@ -9,7 +9,7 @@ let data = fs
   .split("\n")
   .map((s) => s.replace(/\r$/, ""))
   .filter((s) => s.length > 0)
-  .map((r) => r.concat(...Array.from({ length: 32 }, () => r)));
+  .map((r) => r.concat(...Array.from({ length: 31 }, () => r)));
 
 const treesNum = function (data) {
   let stepsRight = 1;
@@ -26,9 +26,7 @@ const treesNum = function (data) {
   }
 
   console.log(trees);
-  return trees;
+  // return trees;
 };
-
-module.exports = treesNum;
 
 treesNum(data);

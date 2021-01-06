@@ -28,7 +28,7 @@ let data2 = emptyLineCut(data);
 
 const countValid = function (array) {
   numValid = 0;
-  for (let passport of data2) {
+  for (let passport of array) {
     let newPassport = passport
       .join()
       .split(":")
@@ -48,9 +48,9 @@ const countValid = function (array) {
     newPassport.includes("ecl") &&
     newPassport.includes("pid")
       ? numValid++
-      : "null";
+      : null;
   }
-  console.log(numValid);
+  return numValid;
 };
 
-countValid(data2);
+console.log(countValid(data2));

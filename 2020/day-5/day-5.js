@@ -8,27 +8,27 @@ let data = fs
   .split("\n")
   .map((s) => s.replace(/\r$/, ""));
 
-const front = function (row) {
-  const newRowArray = row.splice(row.length / 2, row.length - 1);
-  return newRowArray;
-};
+const seatIdFunction = function (seatsArray) {
+  const front = function (row) {
+    const newRowArray = row.splice(row.length / 2, row.length - 1);
+    return newRowArray;
+  };
 
-const back = function (row) {
-  const newRowArray = row.splice(0, row.length / 2);
-  return newRowArray;
-};
+  const back = function (row) {
+    const newRowArray = row.splice(0, row.length / 2);
+    return newRowArray;
+  };
 
-const left = function (column) {
-  const newColumnArray = column.splice(column.length / 2, column.length - 1);
-  return newColumnArray;
-};
+  const left = function (column) {
+    const newColumnArray = column.splice(column.length / 2, column.length - 1);
+    return newColumnArray;
+  };
 
-const right = function (column) {
-  const newColumnArray = column.splice(0, column.length / 2);
-  return newColumnArray;
-};
+  const right = function (column) {
+    const newColumnArray = column.splice(0, column.length / 2);
+    return newColumnArray;
+  };
 
-const seatRowandColumn = function (seatsArray) {
   let seatIdArray = [];
   for (let seat of seatsArray) {
     let row = Array.from(Array(128).keys());
@@ -52,8 +52,15 @@ const seatRowandColumn = function (seatsArray) {
     seatId = Number(row) * 8 + Number(column);
     seatIdArray.push(seatId);
   }
+  return seatIdArray;
+};
+
+const maxIdFunction = function (data) {
+  const seatIdArray = seatIdFunction(data);
   const maxId = Math.max(...seatIdArray);
   return maxId;
 };
 
-console.log(seatRowandColumn(data));
+// console.log(maxIdFunction(data));
+
+exports.seatIdFunction = seatIdFunction;
